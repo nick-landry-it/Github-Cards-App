@@ -29,10 +29,21 @@ class Card extends React.Component {
 }
 
 class Form extends React.Component {
+  state = { userName: '' };
+  handleSumbit = (event) => {
+    event.preventDefault();
+    console.log(this.state.userName);
+  };
   render() {
     return (
-      <form action="">
-        <input type="text" placeholder="GitHub Username" />
+      <form onSubmit={this.handleSumbit}>
+        <input
+          type="text"
+          value={this.state.userName}
+          onChange={event => this.setState({ userName: event.target.value })}
+          placeholder="GitHub Username"
+          required
+        />
         <button>Add Card</button>
       </form>
     )
